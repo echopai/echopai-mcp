@@ -2,13 +2,15 @@
 
 [English](./README.md) · [简体中文](./README.zh-CN.md)
 
-[![MCP Compatible](https://img.shields.io/badge/MCP-Streamable%20HTTP-blue?style=flat-square)](https://modelcontextprotocol.io)
-[![Tools](https://img.shields.io/badge/Tools-41%20Real--time%20Tools-d4a85a?style=flat-square)](#tool-directory-41-tools)
-[![Zero Install](https://img.shields.io/badge/Setup-Zero%20Local%20Install-brightgreen?style=flat-square)](#quick-start-20-seconds)
+[![MCP Compatible](https://img.shields.io/badge/MCP-stdio%20%26%20Remote%20HTTP-blue?style=flat-square)](https://modelcontextprotocol.io)
+[![Tools](https://img.shields.io/badge/Tools-50%20Real--time%20Tools-d4a85a?style=flat-square)](#tool-directory-50-tools)
+[![Zero Install](https://img.shields.io/badge/Setup-Local%20stdio%20%26%20Remote-brightgreen?style=flat-square)](#quick-start-20-seconds)
 [![License: MIT](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](./LICENSE)
 
 **Turn any AI into an event-driven equity research analyst.**  
-Equip Claude, Cursor, VS Code, Gemini CLI, or any MCP-compatible agent with **41 real-time China equity (A-share) & quantitative research tools** — full-text broker reports, individual analyst attribution, corporate filings, quantified sentiment cycles, and limit-up analytics, with traceable citations on every answer.
+Equip Claude, Cursor, VS Code, Gemini CLI, or any MCP-compatible agent with **50 real-time China equity (A-share) & quantitative research tools** — full-text broker reports, individual analyst attribution, corporate filings, quantified sentiment cycles, and limit-up analytics, with traceable citations on every answer.
+
+This repository provides a complete **Node.js MCP Server** built on `@modelcontextprotocol/sdk` and `zod` ([`src/index.js`](./src/index.js), [`src/tools.js`](./src/tools.js), [`src/client.js`](./src/client.js)) wrapping EchoPai's Open Platform REST APIs, alongside a hosted **Streamable HTTP** endpoint (`https://mcp.huishengpai.com/mcp`) for zero-install OAuth setup.
 
 ---
 
@@ -135,28 +137,29 @@ See [Client Configuration Guide](./docs/clients.md) for project-shared configs, 
 
 ---
 
-## Tool Directory (41 Tools)
+## Tool Directory (50 Tools)
 
-All tools are served dynamically from the remote MCP endpoint and stay automatically up to date.
+All 50 tools are explicitly registered with `zod` input schemas in [`src/tools.js`](./src/tools.js) and call EchoPai's Open Platform `/v1` REST APIs via [`src/client.js`](./src/client.js) (with automatic failover between `api.huishengpai.com` and `api.echopai.com`).
 
 | Category | Tools |
 | :--- | :--- |
+| **Account & Market Meta** (`×4`) | `whoami`, `usage`, `market_status`, `trading_days` |
 | **Research & Views** (`×3`) | `views`, `report`, `digest` |
-| **News & Announcements** (`×5`) | `news`, `announcements_feed`, `announcements_search`, `announcements_stock`, `announcements_detail` |
-| **Financials & Valuation** (`×4`) | `financials_reports`, `financials_series`, `financials_pit`, `financials_quote_snapshot` |
+| **News, Announcements & Events** (`×7`) | `news`, `announcements_feed`, `announcements_search`, `announcements_stock`, `announcements_detail`, `events_upcoming`, `events_timeline` |
+| **Financials & Earnings** (`×6`) | `financials_reports`, `financials_series`, `financials_pit`, `financials_quote_snapshot`, `earnings_show`, `earnings_recent` |
 | **Ownership & Lockups** (`×2`) | `ownership_show`, `ownership_lockups` |
-| **Market Quotes & Scan** (`×10`) | `quote`, `bars_batch`, `chart`, `index_snapshot`, `market_status`, `market_movers`, `scan`, `hot`, `search`, `lookup` |
+| **Market Quotes, Technicals & Scan** (`×12`) | `quote`, `bars_batch`, `chart`, `index_snapshot`, `market_movers`, `scan`, `hot`, `search`, `lookup`, `technicals`, `fundflow`, `dragon_tiger_daily` |
 | **Limit-up Analytics** (`×4`) | `limit_up_pool`, `limit_up_analysis`, `limit_up_history`, `limit_up_summary` |
-| **Market Sentiment** (`×5`) | `sentiment`, `sentiment_overview`, `sentiment_breadth`, `sentiment_turnover`, `sentiment_pct_distribution` |
+| **Market Sentiment** (`×4`) | `sentiment_overview`, `sentiment_breadth`, `sentiment_turnover`, `sentiment_pct_distribution` |
 | **Concept Boards** (`×8`) | `concepts_list`, `concepts_show`, `concepts_snapshot`, `concepts_news`, `concepts_views`, `concepts_alerts`, `concepts_minute_bars`, `concepts_daily_bars` |
 
 For detailed descriptions and usage rules, see [Tool Reference](./docs/tools.md).
 
 ---
 
-## Optional: Local stdio Bridge & CLI Fallback
+## Local stdio MCP Server & CLI
 
-For hosts that only support local `stdio` MCP (without native Streamable HTTP support), this repository includes a **zero-dependency stdio-to-HTTP bridge** ([`src/index.js`](./src/index.js), requires Node.js ≥ 20):
+Run this repository directly as a standalone local `stdio` MCP server powered by `@modelcontextprotocol/sdk` and `zod` ([`src/index.js`](./src/index.js), requires Node.js ≥ 20):
 
 ```json
 {

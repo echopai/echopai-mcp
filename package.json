@@ -1,7 +1,7 @@
 {
   "name": "@echopai/mcp",
   "version": "1.0.0",
-  "description": "Lightweight stdio-to-HTTP bridge for the EchoPai (回声投研) remote MCP server.",
+  "description": "Official Model Context Protocol (MCP) server for EchoPai (回声投研) — 40+ real-time China equity quantitative research tools.",
   "type": "module",
   "license": "MIT",
   "author": "EchoPai LLC",
@@ -13,10 +13,12 @@
   "keywords": [
     "mcp",
     "mcp-server",
+    "model-context-protocol",
     "echopai",
     "finance",
     "equity-research",
     "quantitative-research",
+    "china-stocks",
     "ai-agent"
   ],
   "engines": {
@@ -25,8 +27,16 @@
   "bin": {
     "echopai-mcp": "src/index.js"
   },
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node --check src/index.js src/client.js src/tools.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.24.0"
+  },
   "files": [
-    "src/index.js",
+    "src/",
     "README.md",
     "README.zh-CN.md",
     "LICENSE"

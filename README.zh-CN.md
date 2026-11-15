@@ -2,13 +2,15 @@
 
 [English](./README.md) · [简体中文](./README.zh-CN.md)
 
-[![MCP Compatible](https://img.shields.io/badge/MCP-Streamable%20HTTP-blue?style=flat-square)](https://modelcontextprotocol.io)
-[![Tools](https://img.shields.io/badge/Tools-41%20个实时投研工具-d4a85a?style=flat-square)](#工具目录41-个工具随服务端实时更新)
-[![Zero Install](https://img.shields.io/badge/接入方式-本机零安装-brightgreen?style=flat-square)](#快速接入20-秒完成)
+[![MCP Compatible](https://img.shields.io/badge/MCP-stdio%20%26%20Remote%20HTTP-blue?style=flat-square)](https://modelcontextprotocol.io)
+[![Tools](https://img.shields.io/badge/Tools-50%20个实时投研工具-d4a85a?style=flat-square)](#工具目录50-个实时投研工具)
+[![Zero Install](https://img.shields.io/badge/接入方式-本地%20stdio%20%26%20远程%20HTTP-brightgreen?style=flat-square)](#快速接入20-秒完成)
 [![License: MIT](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](./LICENSE)
 
 **让你的 AI，长出机构级投研能力。**  
-一条远程配置，即可把 **41 个实时投研工具**装进 Claude、Cursor、VS Code、Gemini CLI、WorkBuddy 等任意支持 MCP 的 AI：卖方研报全文、分析师历史归因、上市公司公告与前瞻事件、涨停复盘与全市场情绪周期——**每个结论都能回溯到一次真实的数据调用**。
+把 **50 个实时投研工具**装进 Claude、Cursor、VS Code、Gemini CLI、WorkBuddy 等任意支持 MCP 的 AI：卖方研报全文、分析师历史归因、上市公司公告与前瞻事件、涨停复盘与全市场情绪周期——**每个结论都能回溯到一次真实的数据调用**。
+
+本仓库既包含基于 `@modelcontextprotocol/sdk` 与 `zod` 构建的**完整本地 Node.js MCP Server 实现**（[`src/index.js`](./src/index.js)、[`src/tools.js`](./src/tools.js)、[`src/client.js`](./src/client.js)，直连 EchoPai 开放平台 REST API），也提供本机零安装的**远程托管 Streamable HTTP 端点**（`https://mcp.huishengpai.com/mcp`）。
 
 ---
 
@@ -135,26 +137,29 @@ gemini mcp add --transport http --header "Authorization: Bearer <你的密钥>" 
 
 ---
 
-## 工具目录（41 个工具，随服务端实时更新）
+## 工具目录（50 个实时投研工具）
+
+以下 50 个工具均在 [`src/tools.js`](./src/tools.js) 中通过 `@modelcontextprotocol/sdk` 与 `zod` 显式注册，并通过 [`src/client.js`](./src/client.js) 调用 EchoPai 开放平台 `/v1` REST API（自动在 `api.huishengpai.com` 与 `api.echopai.com` 之间容灾切换）：
 
 | 分类 | 工具列表 |
 | :--- | :--- |
+| **账户与市场状态**（`×4`） | `whoami`、`usage`、`market_status`、`trading_days` |
 | **研报观点**（`×3`） | `views`、`report`、`digest` |
-| **新闻公告**（`×5`） | `news`、`announcements_feed`、`announcements_search`、`announcements_stock`、`announcements_detail` |
-| **财务数据**（`×4`） | `financials_reports`、`financials_series`、`financials_pit`、`financials_quote_snapshot` |
+| **新闻、公告与事件**（`×7`） | `news`、`announcements_feed`、`announcements_search`、`announcements_stock`、`announcements_detail`、`events_upcoming`、`events_timeline` |
+| **财务与业绩**（`×6`） | `financials_reports`、`financials_series`、`financials_pit`、`financials_quote_snapshot`、`earnings_show`、`earnings_recent` |
 | **股权事件**（`×2`） | `ownership_show`、`ownership_lockups` |
-| **行情与扫描**（`×10`） | `quote`、`bars_batch`、`chart`、`index_snapshot`、`market_status`、`market_movers`、`scan`、`hot`、`search`、`lookup` |
+| **行情、指标与龙虎榜**（`×12`） | `quote`、`bars_batch`、`chart`、`index_snapshot`、`market_movers`、`scan`、`hot`、`search`、`lookup`、`technicals`、`fundflow`、`dragon_tiger_daily` |
 | **涨停连板**（`×4`） | `limit_up_pool`、`limit_up_analysis`、`limit_up_history`、`limit_up_summary` |
-| **市场情绪**（`×5`） | `sentiment`、`sentiment_overview`、`sentiment_breadth`、`sentiment_turnover`、`sentiment_pct_distribution` |
+| **市场情绪**（`×4`） | `sentiment_overview`、`sentiment_breadth`、`sentiment_turnover`、`sentiment_pct_distribution` |
 | **概念板块**（`×8`） | `concepts_list`、`concepts_show`、`concepts_snapshot`、`concepts_news`、`concepts_views`、`concepts_alerts`、`concepts_minute_bars`、`concepts_daily_bars` |
 
 完整工具说明请参见 [工具能力目录](./docs/tools.md)。
 
 ---
 
-## 可选：本地 stdio 桥接壳与命令行（CLI）
+## 本地 stdio MCP Server 与命令行（CLI）
 
-对于**仅支持本地 `stdio` 模式**（尚不支持远程 Streamable HTTP）的旧版客户端或本地 Agent 框架，本仓库自带一个**零外部依赖的极薄 stdio 桥接壳**（[src/index.js](./src/index.js)，仅需 Node.js ≥ 20）：
+如果你使用本地 `stdio` 模式运行（或用于 MCP 目录平台验证与本地 Agent 集成），本仓库提供了基于 `@modelcontextprotocol/sdk` 与 `zod` 的完整本地 MCP Server（[`src/index.js`](./src/index.js)，需 Node.js ≥ 20）：
 
 ```json
 {
