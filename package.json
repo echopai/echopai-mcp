@@ -1,7 +1,8 @@
 {
   "name": "@echopai/mcp",
-  "version": "1.0.0",
-  "description": "Official Model Context Protocol (MCP) server for EchoPai (回声投研) — 40+ real-time China equity quantitative research tools.",
+  "version": "1.0.1",
+  "mcpName": "io.github.echopai/echopai-mcp",
+  "description": "Official Model Context Protocol (MCP) server for EchoPai (回声投研) — 50 real-time China equity quantitative research tools.",
   "type": "module",
   "license": "MIT",
   "author": "EchoPai LLC",
