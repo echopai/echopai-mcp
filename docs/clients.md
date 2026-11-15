@@ -99,3 +99,19 @@ gemini mcp add --transport http --header "Authorization: Bearer eps_live_xxx" ec
 
 In environments without a browser, always pass the `Authorization: Bearer <KEY>` header directly.
 You can get or manage your keys at <https://echopai.com/go/app/agent>.
+
+---
+
+## Arcade.dev (Remote MCP Server & MCP Gateway)
+
+You can connect EchoPai to **Arcade.dev** as a Remote MCP Server and expose it through an Arcade MCP Gateway:
+
+1. In the **Arcade Dashboard**, go to **Servers** → **Add Remote MCP Server**.
+2. Fill in the connection details:
+   - **Name**: `echopai-mcp`
+   - **Endpoint / URL**: `https://mcp.huishengpai.com/mcp`
+   - **Logo URL**: `https://echopai.com/logo-512.png`
+3. **Authentication**:
+   - **OAuth 2.0 (Recommended)**: EchoPai supports standard MCP OAuth discovery (`/.well-known/oauth-authorization-server`) with PKCE (`S256`) and dynamic client registration.
+   - **API Key / Static Header**: Pass `Authorization: Bearer <YOUR_KEY>` for headless or shared service connections.
+4. Go to **MCP Gateways** → **Create MCP Gateway**, select `echopai-mcp` tools, and connect your clients to the generated Arcade Gateway URL.
