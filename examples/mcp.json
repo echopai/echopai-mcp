@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "echopai": {
+      "type": "http",
+      "url": "https://mcp.huishengpai.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${ECHOPAI_KEY}"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "echopai": {
+      "command": "npx",
+      "args": ["-y", "@echopai/mcp"],
+      "env": {
+        "ECHOPAI_API_KEY": "eps_live_YOUR_KEY_HERE"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+version: 1.0.0
+name: echopai
+title: EchoPai · 回声投研
+description: Event-driven quantitative equity research MCP server with 40+ real-time tools: full-text broker reports, analyst attribution, corporate filings, market sentiment cycles, limit-up analytics, and concept boards.
+homepage: https://echopai.com
+repository: https://github.com/echopai/echopai-mcp
+transport:
+  type: http
+  url: https://mcp.huishengpai.com/mcp
+tags:
+  - finance
+  - investment
+  - equity-research
+  - quantitative-research
+  - market-data
+  - mcp

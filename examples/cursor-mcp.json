@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "echopai": {
+      "url": "https://mcp.huishengpai.com/mcp",
+      "headers": {
+        "Authorization": "Bearer eps_live_YOUR_KEY_HERE"
+      }
+    }
+  }
+}

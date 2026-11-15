@@ -1,0 +1,37 @@
+{
+  "name": "@echopai/mcp",
+  "version": "1.0.0",
+  "description": "Lightweight stdio-to-HTTP bridge for the EchoPai (回声投研) remote MCP server.",
+  "type": "module",
+  "license": "MIT",
+  "author": "EchoPai LLC",
+  "homepage": "https://echopai.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/echopai/echopai-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "echopai",
+    "finance",
+    "equity-research",
+    "quantitative-research",
+    "ai-agent"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "bin": {
+    "echopai-mcp": "src/index.js"
+  },
+  "files": [
+    "src/index.js",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

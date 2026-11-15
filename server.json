@@ -1,0 +1,52 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "com.echopai/echopai-mcp",
+  "title": "EchoPai (回声投研)",
+  "description": "Event-driven quantitative equity research MCP server: 40+ real-time tools for broker research full text, analyst attribution, corporate announcements, sentiment cycles, limit-up recaps, and market microstructure.",
+  "version": "4.0.1",
+  "websiteUrl": "https://echopai.com",
+  "repository": {
+    "url": "https://github.com/echopai/echopai-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.huishengpai.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Optional Bearer API key (Bearer eps_live_...). Omit when using browser OAuth 2.0.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@echopai/mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "ECHOPAI_API_KEY",
+          "description": "EchoPai API key (eps_live_...) from https://echopai.com/go/app/agent",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    },
+    {
+      "registryType": "npm",
+      "identifier": "echopai",
+      "version": "4.0.1",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
