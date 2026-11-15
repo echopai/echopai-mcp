@@ -4,8 +4,11 @@
 
 [![MCP Compatible](https://img.shields.io/badge/MCP-stdio%20%26%20Remote%20HTTP-blue?style=flat-square)](https://modelcontextprotocol.io)
 [![Tools](https://img.shields.io/badge/Tools-50%20Real--time%20Tools-d4a85a?style=flat-square)](#tool-directory-50-tools)
-[![Zero Install](https://img.shields.io/badge/Setup-Local%20stdio%20%26%20Remote-brightgreen?style=flat-square)](#quick-start-20-seconds)
+[![npm](https://img.shields.io/npm/v/@echopai/mcp?style=flat-square&color=cb3837)](https://www.npmjs.com/package/@echopai/mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](./LICENSE)
+
+[![echopai/echopai-mcp MCP server](https://glama.ai/mcp/servers/echopai/echopai-mcp/badges/score.svg)](https://glama.ai/mcp/servers/echopai/echopai-mcp)
+[![EchoPai MCP connector](https://glama.ai/mcp/connectors/com.huishengpai.mcp/echopai-mcp/badges/score.svg)](https://glama.ai/mcp/connectors/com.huishengpai.mcp/echopai-mcp)
 
 **Turn any AI into an event-driven equity research analyst.**  
 Equip Claude, Cursor, VS Code, Gemini CLI, or any MCP-compatible agent with **50 real-time China equity (A-share) & quantitative research tools** — full-text broker reports, individual analyst attribution, corporate filings, quantified sentiment cycles, and limit-up analytics, with traceable citations on every answer.

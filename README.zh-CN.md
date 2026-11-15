@@ -4,8 +4,11 @@
 
 [![MCP Compatible](https://img.shields.io/badge/MCP-stdio%20%26%20Remote%20HTTP-blue?style=flat-square)](https://modelcontextprotocol.io)
 [![Tools](https://img.shields.io/badge/Tools-50%20个实时投研工具-d4a85a?style=flat-square)](#工具目录50-个实时投研工具)
-[![Zero Install](https://img.shields.io/badge/接入方式-本地%20stdio%20%26%20远程%20HTTP-brightgreen?style=flat-square)](#快速接入20-秒完成)
+[![npm](https://img.shields.io/npm/v/@echopai/mcp?style=flat-square&color=cb3837)](https://www.npmjs.com/package/@echopai/mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](./LICENSE)
+
+[![echopai/echopai-mcp MCP server](https://glama.ai/mcp/servers/echopai/echopai-mcp/badges/score.svg)](https://glama.ai/mcp/servers/echopai/echopai-mcp)
+[![EchoPai MCP connector](https://glama.ai/mcp/connectors/com.huishengpai.mcp/echopai-mcp/badges/score.svg)](https://glama.ai/mcp/connectors/com.huishengpai.mcp/echopai-mcp)
 
 **让你的 AI，长出机构级投研能力。**  
 把 **50 个实时投研工具**装进 Claude、Cursor、VS Code、Gemini CLI、WorkBuddy 等任意支持 MCP 的 AI：卖方研报全文、分析师历史归因、上市公司公告与前瞻事件、涨停复盘与全市场情绪周期——**每个结论都能回溯到一次真实的数据调用**。
